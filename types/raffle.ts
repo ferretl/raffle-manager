@@ -72,12 +72,11 @@ export const drawWinner = (raffle: Raffle): Maybe<Participant> => {
   switch (validParticipants.length) {
     case 0:
       return Nothing();
-    default: {
+    default:
       const winnerIndex = Math.floor(Math.random() * validParticipants.length);
       const winner = validParticipants[winnerIndex];
 
       return Just(winner);
-    }
   }
 };
 
