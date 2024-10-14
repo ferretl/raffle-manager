@@ -1,5 +1,6 @@
 import { Participant } from "./participant";
 import { EntryCondition, checkConditions } from "./entryCondition";
+import { Maybe, Just, Nothing } from "./maybe";
 
 export type Raffle = {
   id: string;
@@ -29,16 +30,20 @@ export const getValidParticipants = (
  * @param participants - The array of participants who entered the raffle.
  * @returns - The winner of the raffle.
  */
-export const drawWinner = (raffle: Raffle, participants: Participant[]) => {
+export const drawWinner = (
+  raffle: Raffle,
+  participants: Participant[]
+): Maybe<Participant> => {
   const validParticipants = getValidParticipants(
     participants,
     raffle.entryConditions
   );
-  // Check if there are any valid participants
-  if (validParticipants.length === 0) {
-    throw new Error("No participants meet the entry conditions.");
+  switch (validParticipants.length) {
+    case 0:
+      return Nothing();
+    default:
+      const winnerIndex = Math.floor(Math.random() * validParticipants.length);
+      const winner = validParticipants[winnerIndex];
+      return Just(winner);
   }
-  const winner =
-    validParticipants[Math.floor(Math.random() * validParticipants.length)];
-  return winner;
 };
