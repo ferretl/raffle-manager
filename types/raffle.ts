@@ -12,6 +12,41 @@ export type Raffle = {
 };
 
 /**
+ * 
+ * @param id - The id of the raffle
+ * @param name - The name of the raffle
+ * @param entryConditions - The conditions that participants must meet to enter the raffle
+ * @param endDate - The date when the raffle will end
+ * @returns A new raffle object
+ */
+export const createRaffle = (
+  id: string,
+  name: string,
+  entryConditions: EntryCondition[],
+  endDate: Date,
+) => ({
+  id,
+  name,
+  entryConditions,
+  participants: [],
+  endDate,
+  winner: Nothing(),
+});
+
+/**
+ * Adds a participant to a raffle.
+ * @param raffle The raffle to which the participant will be added
+ * @param participant The participant to be added to the raffle
+ * @returns A new raffle object with the participant added
+ */
+export const addParticipant = (raffle: Raffle, participant: Participant) => (
+  {
+    ...raffle,
+    participants: [...raffle.participants, participant],
+  }
+)
+
+/**
  * Filters out participants who do not meet the specified entry conditions.
  * @param participants - The list of participants to be filtered.
  * @param conditions - An array of entry conditions that the participants must meet.
@@ -28,15 +63,13 @@ export const getValidParticipants = (
 /**
  * Draws a winner from the list of participants who meet the entry conditions.
  * @param raffle - The raffle for which a winner is to be drawn.
- * @param participants - The list of participants who entered the raffle.
  * @returns - A Maybe type containing the winner if one is drawn, or Nothing if no winner is found.
  */
 export const drawWinner = (
   raffle: Raffle,
-  participants: Participant[]
 ): Maybe<Participant> => {
   const validParticipants = getValidParticipants(
-    participants,
+    raffle.participants,
     raffle.entryConditions
   );
   switch (validParticipants.length) {
