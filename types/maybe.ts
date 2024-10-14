@@ -31,7 +31,7 @@ export const Just = <T>(value: T): Just<T> => ({
  */
 export const maybeMap = <T, U>(
   maybe: Maybe<T>,
-  f: (value: T) => U
+  f: (value: T) => U,
 ): Maybe<U> => {
   switch (maybe.type) {
     case MaybeType.Just:
@@ -42,7 +42,7 @@ export const maybeMap = <T, U>(
 };
 
 /**
- * 
+ *
  * @param maybe - The maybe to match
  * @param onJust - The function to apply if the maybe is Just
  * @param onNothing - The function to apply if the maybe is Nothing
@@ -51,7 +51,7 @@ export const maybeMap = <T, U>(
 export const maybeMatch = <T, U>(
   maybe: Maybe<T>,
   onJust: (value: T) => U,
-  onNothing: () => U
+  onNothing: () => U,
 ): U => {
   switch (maybe.type) {
     case MaybeType.Just:

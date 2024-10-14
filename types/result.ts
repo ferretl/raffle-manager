@@ -30,11 +30,12 @@ export const Err = (error: string): Err => ({
  *
  * @param result - The `Result` instance to map over.
  * @param f  - The function to apply to the value inside the `Result`.
- * @returns A new `Result` instance containing the result of applying the function,
+ * @returns A new `Result` instance containing the result
+ *  of applying the function,
  */
 export const resultMap = <T, U>(
   result: Result<T>,
-  f: (value: T) => U
+  f: (value: T) => U,
 ): Result<U> => {
   switch (result.type) {
     case ResultType.Ok:
@@ -43,4 +44,3 @@ export const resultMap = <T, U>(
       return Err(result.error);
   }
 };
-

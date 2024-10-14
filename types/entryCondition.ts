@@ -29,7 +29,6 @@ export const Comment: EntryCondition = {
   },
 };
 
-
 /**
  * Checks if a Participant meets all the specified entry conditions.
  *
@@ -37,5 +36,7 @@ export const Comment: EntryCondition = {
  * @param conditions - An array of entry conditions that the Participant must meet.
  * @returns A boolean indicating whether the Participant meets all the conditions.
  */
-export const checkConditions = (Participant: Participant, conditions: EntryCondition[]) =>
-  conditions.every((condition) => condition.check(Participant));
+export const checkConditions = (
+  Participant: Participant,
+  conditions: EntryCondition[],
+) => conditions.every(condition => condition.check(Participant));
