@@ -7,6 +7,7 @@ export type Raffle = {
   name: string;
   entryConditions: EntryCondition[];
   participants: Participant[];
+  endDate: Date;
   winner: Maybe<Participant>;
 };
 
@@ -25,10 +26,10 @@ export const getValidParticipants = (
   );
 
 /**
- * Selects a random winner from the list of participants who meet the entry conditions.
- * @param raffle - The Raffle to draw a winner for.
- * @param participants - The array of participants who entered the raffle.
- * @returns - The winner of the raffle.
+ * Draws a winner from the list of participants who meet the entry conditions.
+ * @param raffle - The raffle for which a winner is to be drawn.
+ * @param participants - The list of participants who entered the raffle.
+ * @returns - A Maybe type containing the winner if one is drawn, or Nothing if no winner is found.
  */
 export const drawWinner = (
   raffle: Raffle,
