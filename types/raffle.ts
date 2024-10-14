@@ -7,7 +7,7 @@ export type Raffle = {
   name: string;
   entryConditions: EntryCondition[];
   participants: Participant[];
-  winner?: Participant;
+  winner: Maybe<Participant>;
 };
 
 /**
