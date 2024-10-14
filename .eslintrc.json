@@ -1,5 +1,8 @@
 {
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "rules": {
     "max-len": [
       "error",
@@ -8,6 +11,21 @@
         "ignoreComments": true,
         "ignoreStrings": true
       }
-    ]
+    ],
+    "prefer-const": "error",
+    "no-var": "error",
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "array-callback-return": "error",
+    "camelcase": "error",
+    "eqeqeq": "error",
+    "func-name-matching": "error",
+    "no-iterator": "error"
   }
 }
