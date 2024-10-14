@@ -1,4 +1,4 @@
-import { Participant } from "./participant";
+import { Participant } from './participant';
 
 export type EntryCondition = {
   condition: string;
@@ -6,7 +6,7 @@ export type EntryCondition = {
 };
 
 export const Follow: EntryCondition = {
-  condition: "follow",
+  condition: 'follow',
   check: () => {
     //TODO: use X api to check if Participant is following the account
     return true; // check if Participant is following the account
@@ -14,7 +14,7 @@ export const Follow: EntryCondition = {
 };
 
 export const Like: EntryCondition = {
-  condition: "like",
+  condition: 'like',
   check: () => {
     //TODO: use X api to check if Participant is liking the post
     return true; // check if Participant is liking the post
@@ -22,7 +22,7 @@ export const Like: EntryCondition = {
 };
 
 export const Comment: EntryCondition = {
-  condition: "comment",
+  condition: 'comment',
   check: () => {
     // TODO: use X api to check if Participant is commenting on the post
     return true; // check if Participant is commenting on the post
@@ -38,5 +38,5 @@ export const Comment: EntryCondition = {
  */
 export const checkConditions = (
   Participant: Participant,
-  conditions: EntryCondition[],
-) => conditions.every(condition => condition.check(Participant));
+  conditions: EntryCondition[]
+) => conditions.every((condition) => condition.check(Participant));

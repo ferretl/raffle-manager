@@ -1,6 +1,6 @@
 enum ResultType {
-  Ok = "result-type__ok",
-  Err = "result-type__err",
+  Ok = 'result-type__ok',
+  Err = 'result-type__err',
 }
 
 interface Ok<T> {
@@ -35,7 +35,7 @@ export const Err = (error: string): Err => ({
  */
 export const resultMap = <T, U>(
   result: Result<T>,
-  f: (value: T) => U,
+  f: (value: T) => U
 ): Result<U> => {
   switch (result.type) {
     case ResultType.Ok:

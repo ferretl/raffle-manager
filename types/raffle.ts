@@ -1,7 +1,7 @@
-import { Participant } from "./participant";
-import { EntryCondition, checkConditions } from "./entryCondition";
-import { maybeMatch, Maybe, Nothing, Just } from "./maybe";
-import { Ok, Err, Result } from "./result";
+import { Participant } from './participant';
+import { EntryCondition, checkConditions } from './entryCondition';
+import { maybeMatch, Maybe, Nothing, Just } from './maybe';
+import { Ok, Err, Result } from './result';
 
 export type Raffle = {
   id: string;
@@ -24,7 +24,7 @@ export const createRaffle = (
   id: string,
   name: string,
   entryConditions: EntryCondition[],
-  endDate: Date,
+  endDate: Date
 ) => ({
   id,
   name,
@@ -53,9 +53,11 @@ export const addParticipant = (raffle: Raffle, participant: Participant) => ({
  */
 export const getValidParticipants = (
   participants: Participant[],
-  conditions: EntryCondition[],
+  conditions: EntryCondition[]
 ) =>
-  participants.filter(participant => checkConditions(participant, conditions));
+  participants.filter((participant) =>
+    checkConditions(participant, conditions)
+  );
 
 /**
  * Draws a winner from the list of participants who meet the entry conditions.
@@ -65,7 +67,7 @@ export const getValidParticipants = (
 export const drawWinner = (raffle: Raffle): Maybe<Participant> => {
   const validParticipants = getValidParticipants(
     raffle.participants,
-    raffle.entryConditions,
+    raffle.entryConditions
   );
   switch (validParticipants.length) {
     case 0:
@@ -89,6 +91,6 @@ export const drawWinner = (raffle: Raffle): Maybe<Participant> => {
 export const getWinner = (raffle: Raffle): Result<Participant> =>
   maybeMatch<Participant, Result<Participant>>(
     raffle.winner,
-    winner => Ok(winner),
-    () => Err("No winner has been drawn yet"),
+    (winner) => Ok(winner),
+    () => Err('No winner has been drawn yet')
   );

@@ -1,6 +1,6 @@
 enum MaybeType {
-  Just = "maybe-type__just",
-  Nothing = "maybe-type__nothing",
+  Just = 'maybe-type__just',
+  Nothing = 'maybe-type__nothing',
 }
 
 interface Just<T> {
@@ -31,7 +31,7 @@ export const Just = <T>(value: T): Just<T> => ({
  */
 export const maybeMap = <T, U>(
   maybe: Maybe<T>,
-  f: (value: T) => U,
+  f: (value: T) => U
 ): Maybe<U> => {
   switch (maybe.type) {
     case MaybeType.Just:
@@ -51,7 +51,7 @@ export const maybeMap = <T, U>(
 export const maybeMatch = <T, U>(
   maybe: Maybe<T>,
   onJust: (value: T) => U,
-  onNothing: () => U,
+  onNothing: () => U
 ): U => {
   switch (maybe.type) {
     case MaybeType.Just:
