@@ -63,3 +63,23 @@ export const Just = <T>(value: T): Just<T> => ({
   type: MaybeType.Just,
   value,
 });
+
+
+/**
+ * Applies a function to the value inside a `Maybe` if it exists.
+ *
+ * @template T - The type of the value inside the `Maybe`.
+ * @template U - The type of the value returned by the function.
+ * @param {Maybe<T>} maybe - The `Maybe` instance to map over.
+ * @param {(value: T) => U} f - The function to apply to the value inside the `Maybe`.
+ * @returns {Maybe<U>} A new `Maybe` instance containing the result of applying the function,
+ *                     or `Nothing` if the original `Maybe` was `Nothing`.
+ */
+export const maybeMap = <T, U>(maybe: Maybe<T>, f: (value: T) => U): Maybe<U> => {
+  switch (maybe.type) {
+    case MaybeType.Just:
+      return Just(f(maybe.value));
+    case MaybeType.Nothing:
+      return Nothing();
+  }
+}
