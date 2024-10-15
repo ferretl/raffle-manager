@@ -18,21 +18,21 @@ export const homeGridItems: ReadonlyArray<HomeGridItem> = [
     href: '/create',
   },
   {
-    title: 'Outcomes',
-    description: 'View all raffles Outcomes',
+    title: 'Raffles',
+    description: 'View all Raffles',
     icon: CelebrationIcon,
-    href: '/outcomes',
+    href: '/Raffles',
   },
   {
     title: 'Statistics',
     description: 'View statistics of all your raffles',
     icon: HistoryIcon,
-    href: '/statistics',
+    href: '/Statistics',
   },
   {
     title: 'Profile',
     description: 'View and edit your profile',
     icon: PermIdentityIcon,
-    href: '/settings',
+    href: '/Profile',
   },
 ];
