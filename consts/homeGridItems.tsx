@@ -15,7 +15,7 @@ export const homeGridItems: ReadonlyArray<HomeGridItem> = [
     title: 'Create a Raffle',
     description: 'Create a new raffle and manage it',
     icon: CreateIcon,
-    href: '/create',
+    href: '/CreateRaffle',
   },
   {
     title: 'Raffles',
